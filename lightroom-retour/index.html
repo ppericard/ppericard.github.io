@@ -8,7 +8,8 @@
 <!-- La page de retour de la connexion de l'agence à Lightroom (cahier construction/lightroom-reference.md, point 1), publiée sur le
      GitHub de Pierre : Adobe exige une adresse de retour en https. Elle renvoie aussitôt ce qu'Adobe lui donne vers la commande qui
      attend sur son ordinateur, à l'adresse 127.0.0.1:47821, et nulle part ailleurs ; elle ne garde rien et ne charge rien. Le code
-     arrive après le # : il ne va pas aux serveurs de GitHub, et ne reste pas dans l'historique. -->
+     arrive après le # : il ne va pas aux serveurs de GitHub. Il reste dans l'historique de Chrome, sans danger : il ne sert qu'une
+     fois, la commande l'échange aussitôt, et il ne vaut rien sans le vérificateur (ou le secret) resté sur l'ordinateur. -->
 <script>
 const recu = new URLSearchParams(location.hash.slice(1) || location.search.slice(1));
 const transmis = new URLSearchParams();
