@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<title>Agence · Lightroom</title>
+<p id="dit" style="font:16px sans-serif;margin:3em">Retour vers ton ordinateur…</p>
+<!-- La page de retour de la connexion de l'agence à Lightroom (cahier construction/lightroom-reference.md, point 1), publiée sur le
+     GitHub de Pierre : Adobe exige une adresse de retour en https. Elle renvoie aussitôt ce qu'Adobe lui donne vers la commande qui
+     attend sur son ordinateur, à l'adresse 127.0.0.1:47821, et nulle part ailleurs ; elle ne garde rien et ne charge rien. Le code
+     arrive après le # : il ne va pas aux serveurs de GitHub, et ne reste pas dans l'historique. -->
+<script>
+const recu = new URLSearchParams(location.hash.slice(1) || location.search.slice(1));
+const transmis = new URLSearchParams();
+for (const nom of ["code", "state", "error", "error_description"]) if (recu.has(nom)) transmis.set(nom, recu.get(nom));
+history.replaceState(null, "", location.pathname);
+if (transmis.has("state")) location.replace("http://127.0.0.1:47821/retour?" + transmis);
+else document.getElementById("dit").textContent = "Cette page ne sert qu'au retour de la connexion de l'agence à Lightroom.";
+</script>
